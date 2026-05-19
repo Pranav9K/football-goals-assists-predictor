@@ -54,14 +54,22 @@ pip install pandas numpy scikit-learn xgboost matplotlib seaborn jupyter
 ### Step 3: Organize the Datasets
 1. Inside your project folder, create a new folder named exactly: data
 2. Download your Kaggle files and place them inside that /ModelData folder.
- 
    Your directory structure should look like this:
-   └── football-ga-predictor/
-       ├── player_GA_ml.ipynb
-       └── ModelData/
-           ├── football-data_23-24.csv
-           ├── football-data_24-25.csv
-           └── football-data_25-26.csv
+   
+  FOOTBALL-GA-PREDICTOR/
+  ├── ModelData/
+  │   ├── football-data_23-24.csv
+  │   ├── football-data_24-25.csv
+  │   └── football-data_25-26.csv
+  ├── Visualizations/
+  │   ├── cross_validation.png
+  │   ├── feature_importance_gb.png
+  │   ├── model_comparison_mae.png
+  │   ├── predicted_vs_actual.png
+  │   ├── residuals_gb.png
+  │   └── top10_predictions.png
+  ├── player_GA_ml.ipynb
+  └── README.md
 
 ### Step 4: Launch and Run the Jupyter Notebook
 Start the local Jupyter notebook environment with this command:
