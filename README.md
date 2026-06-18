@@ -31,11 +31,12 @@ One of the core strengths of this project is the data preparation pipeline:
 ## 🧠 Machine Learning Models
 The project tests and evaluates several regression algorithms to find the most accurate predictor of future performance:
 * **Random Forest Regressor:** Excellent for handling non-linear relationships and interactions between advanced metrics.
-* **Gradient Boosting Regressor:** Used for sequentially minimizing prediction errors.
-* **XGBoost Regressor:** The final high-performance model, utilizing extreme gradient boosting for optimized predictive accuracy.
+* **XGBoost Regressor:** Utilized for extreme gradient boosting and high-performance tabular data optimization.
+* **Gradient Boosting Regressor (Champion Model):** The final, most accurate model chosen for full evaluation and projections, successfully minimizing prediction errors for the lowest Mean Absolute Error (MAE) on the test set.
 
 **Target Variable:** `Target_GA_per90` (2025-2026 Season)  
 **Evaluation Metric:** **Mean Absolute Error (MAE)**. The model evaluates its accuracy by projecting the predicted G+A/90 across the player's actual minutes played to find how many total Goals/Assists the model was off by on average.
+
 
 # How to Run the Football Player Future G/A Predictor Locally
 
@@ -48,18 +49,28 @@ cd football-ga-predictor
 
 ### Step 2: Install Required Python Libraries
 Install all the data processing, scaling, and machine learning packages needed by running:
-pip install pandas numpy scikit-learn xgboost jupyter
+pip install pandas numpy scikit-learn xgboost matplotlib seaborn jupyter
 
 ### Step 3: Organize the Datasets
-1. Inside your project folder, create a new folder named exactly: data
-2. Download your Kaggle files and place them inside that /data folder. 
-   Your directory structure should look like this:
-   └── football-ga-predictor/
-       ├── player_GA_ml.ipynb
-       └── data/
-           ├── football-data_23-24.csv
-           ├── football-data_24-25.csv
-           └── football-data_25-26.csv
+1. Inside your project folder, create a new folder named exactly: ModelData
+2. Download your Kaggle files and place them inside that /ModelData folder.
+Your directory structure should look like this:
+  ```text
+FOOTBALL-GA-PREDICTOR/
+├── ModelData/
+│   ├── football-data_23-24.csv
+│   ├── football-data_24-25.csv
+│   └── football-data_25-26.csv
+├── Visualizations/
+│   ├── cross_validation.png
+│   ├── feature_importance_gb.png
+│   ├── model_comparison_mae.png
+│   ├── predicted_vs_actual.png
+│   ├── residuals_gb.png
+│   └── top10_predictions.png
+├── player_GA_ml.ipynb
+└── README.md
+```
 
 ### Step 4: Launch and Run the Jupyter Notebook
 Start the local Jupyter notebook environment with this command:
