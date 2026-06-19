@@ -9,6 +9,8 @@
 ## 📖 Project Overview
 This project applies Machine Learning to predict a football (soccer) player's future **G+A (Goals + Assists)** production based on their historical performance and underlying advanced metrics. 
 
+Live ON: https://football-future-ga-predictor.streamlit.app/
+
 By utilizing rolling data spanning three seasons (2023-2024, 2024-2025, and 2025-2026), the model forecasts a player's **G+A per 90 minutes for the upcoming 2026-2027 season**. It transitions away from raw output and relies heavily on expected metrics (xG, xAG), progression stats, and custom-engineered consistency and momentum features to identify underlying talent rather than lucky outliers.
 
 This project also includes a **Real-Time Interactive Dashboard** built in Streamlit, allowing scouts and fans to simulate player playing time and view expected outputs dynamically.
