@@ -1,4 +1,4 @@
-# ⚽ Football Player Future G/A Predictor (2026-2027 Edition)
+# Football Player Future G/A Predictor (2026-2027 Edition)
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B.svg)](https://streamlit.io/)
@@ -6,7 +6,7 @@
 [![XGBoost](https://img.shields.io/badge/XGBoost-Gradient_Boosting-green.svg)](https://xgboost.readthedocs.io/)
 [![Pandas](https://img.shields.io/badge/Pandas-Data_Processing-lightgrey.svg)](https://pandas.pydata.org/)
 
-## 📖 Project Overview
+## Project Overview
 This project applies Machine Learning to predict a football (soccer) player's future **G+A (Goals + Assists)** production based on their historical performance and underlying advanced metrics. 
 
 Live ON: https://football-future-ga-predictor.streamlit.app/
@@ -15,12 +15,12 @@ By utilizing rolling data spanning three seasons (2023-2024, 2024-2025, and 2025
 
 This project also includes a **Real-Time Interactive Dashboard** built in Streamlit, allowing scouts and fans to simulate player playing time and view expected outputs dynamically.
 
-## 🎯 Motivation
+## Motivation
 In modern football scouting, relying solely on last year's goals and assists can be misleading due to variance and luck. This project was built to demonstrate how predictive modeling and feature engineering can uncover a player's true baseline performance, providing data-driven scouting insights similar to those used by elite European clubs.
 
 ---
 
-## 📂 Required Directory Structure
+## Required Directory Structure
 To ensure the machine learning pipeline and the web dashboard communicate perfectly, your local project folder should look exactly like this:
 
 ```text
