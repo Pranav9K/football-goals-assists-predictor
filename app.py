@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 st.title("⚽ Football Player Future Performance Predictor (2026-2027)")
-st.markdown("this system applies a trained machine learning model across rolling multi-season consistency and momentum metrics to forecast goal contributions per 90 minutes for the upcoming season.")
+st.markdown("This system applies a trained machine learning model across rolling multi-season consistency and momentum metrics to forecast goal contributions per 90 minutes for the upcoming season.")
 
 # secure resource loading from cache arrays
 @st.cache_resource
@@ -63,11 +63,12 @@ st.sidebar.subheader("2026-2027 playing time simulator")
 simulated_90s = st.sidebar.slider("simulate projected volume (90s played):", 1.0, 38.0, 25.0, step=0.5)
 
 # compile machine learning input vectors mapped to expected training features
+# FIX: Replaced PrgC_25, PrgP_25, PrgR_25 with the available _24 variables since df25 lacks them
 features_schema = [
     'Age_current', 'Pos_encoded', '90s_24', '90s_25', 'GA_per90_24', 'xG_per90_24', 'xAG_per90_24',
     'GA_per90_25', 'xG_per90_25', 'xAG_per90_25', 'GA_consistency', 'GA_volatility', 'GA_trend', 
     'xG_consistency', 'xG_volatility', 'xG_trend', 'xAG_consistency', 'xAG_volatility', 'xAG_trend',
-    'PrgC_25', 'PrgP_25', 'PrgR_25'
+    'PrgC_24', 'PrgP_24', 'PrgR_24' 
 ]
 
 model_features = [
@@ -81,8 +82,9 @@ input_payload = pd.DataFrame([player_data[features_schema].values], columns=mode
 
 # process live forward calculation engine predictions
 predicted_ga_per90 = forecasting_model.predict(input_payload)[0]
-# safeguard against anomalies dropping model predictions below mathematical zero floors
-predicted_ga_per90 = max(0.0, predicted_ga_per90)
+
+# FIX: Explicit float cast to prevent float32 numpy typing issues with Streamlit format strings
+predicted_ga_per90 = max(0.0, float(predicted_ga_per90))
 projected_total_ga = predicted_ga_per90 * simulated_90s
 
 # visual grid section 1: key scorecards
@@ -125,7 +127,8 @@ with graph_col2:
     st.subheader("🎯 performance profiles and regression indicators")
     
     st.write(f"**primary tactical grouping:** `{player_data['Pos_24']}`")
-    st.write(f"**rolling goal momentum metric (trend):** `{player_data['GA_trend']}:+.2f`")
+    # FIX: Corrected format string syntax to bring the colon inside the variable brackets
+    st.write(f"**rolling goal momentum metric (trend):** `{player_data['GA_trend']:+.2f}`")
     st.write(f"**historical volatility parameter:** `{player_data['GA_volatility']:.2f}`")
     
     st.markdown("##### expected threat profiles (25-26 season baseline)")
