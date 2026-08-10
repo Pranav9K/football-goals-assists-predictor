@@ -11,8 +11,8 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("⚽ Football Player Future Performance Predictor (2026-2027)")
-st.markdown("This system applies a trained machine learning model across rolling multi-season consistency and momentum metrics to forecast goal contributions per 90 minutes for the upcoming season.")
+st.title("Football Player Future Performance Predictor (2026-2027)")
+st.markdown("This system applies a trained machine learning model across rolling multi-season consistency and momentum metrics to forecast goal contributions per 90 minutes for the upcoming season in their respective domestic leagues.")
 
 # secure resource loading from cache arrays
 @st.cache_resource
@@ -33,7 +33,7 @@ except Exception as e:
     st.stop()
 
 # sidebar tracking controls
-st.sidebar.header("scouting search criteria")
+st.sidebar.header("Scouting search criteria")
 
 # extract unique positions and make sure they are strings
 available_positions = sorted([str(x) for x in features_df['Pos_24'].dropna().unique().tolist()])
@@ -105,7 +105,7 @@ st.markdown("---")
 graph_col1, graph_col2 = st.columns(2)
 
 with graph_col1:
-    st.subheader("📊 historical trajectory vs machine learning projection")
+    st.subheader("Historical trajectory vs Machine learning projection")
     
     # build a clean timeline mapping values across rolling intervals
     seasons = ['24-25 season', '25-26 season', '26-27 prediction']
