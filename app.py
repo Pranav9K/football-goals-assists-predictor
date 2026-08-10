@@ -124,7 +124,7 @@ with graph_col1:
     st.pyplot(fig)
 
 with graph_col2:
-    st.subheader("🎯 performance profiles and regression indicators")
+    st.subheader("Performance profiles and regression indicators")
     
     st.write(f"**primary tactical grouping:** `{player_data['Pos_24']}`")
     # FIX: Corrected format string syntax to bring the colon inside the variable brackets
