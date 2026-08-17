@@ -63,18 +63,16 @@ st.sidebar.subheader("2026-2027 playing time simulator")
 simulated_90s = st.sidebar.slider("simulate projected volume (90s played):", 1.0, 38.0, 25.0, step=0.5)
 
 # compile machine learning input vectors mapped to expected training features
-# FIX: Replaced PrgC_25, PrgP_25, PrgR_25 with the available _24 variables since df25 lacks them
+# FIXED: Aligned exactly to the 12 features the XGBoost model was trained on
 features_schema = [
-    'Age_current', 'Pos_encoded', '90s_24', '90s_25', 'GA_per90_24', 'xG_per90_24', 'xAG_per90_24',
-    'GA_per90_25', 'xG_per90_25', 'xAG_per90_25', 'GA_consistency', 'GA_volatility', 'GA_trend', 
-    'xG_consistency', 'xG_volatility', 'xG_trend', 'xAG_consistency', 'xAG_volatility', 'xAG_trend',
+    'Age_current', 'Pos_encoded', '90s_24', '90s_25', 'GA_per90_24',
+    'GA_per90_25', 'GA_consistency', 'GA_volatility', 'GA_trend', 
     'PrgC_24', 'PrgP_24', 'PrgR_24' 
 ]
 
 model_features = [
-    'Age_current', 'Pos_encoded', '90s_23', '90s_24', 'GA_per90_23', 'xG_per90_23', 'xAG_per90_23',
-    'GA_per90_24', 'xG_per90_24', 'xAG_per90_24', 'GA_consistency', 'GA_volatility', 'GA_trend', 
-    'xG_consistency', 'xG_volatility', 'xG_trend', 'xAG_consistency', 'xAG_volatility', 'xAG_trend',
+    'Age_current', 'Pos_encoded', '90s_23', '90s_24', 'GA_per90_23',
+    'GA_per90_24', 'GA_consistency', 'GA_volatility', 'GA_trend', 
     'PrgC_24', 'PrgP_24', 'PrgR_24'
 ]
 
@@ -131,9 +129,7 @@ with graph_col2:
     st.write(f"**rolling goal momentum metric (trend):** `{player_data['GA_trend']:+.2f}`")
     st.write(f"**historical volatility parameter:** `{player_data['GA_volatility']:.2f}`")
     
-    st.markdown("##### expected threat profiles (25-26 season baseline)")
-    st.write(f"expected goals (xG) per 90: `{player_data['xG_per90_25']:.2f}`")
-    st.write(f"expected assisted goals (xAG) per 90: `{player_data['xAG_per90_25']:.2f}`")
+    # FIXED: Removed xG and xAG expected threat profiles as they are not calculated or exported in the source notebook
     
     # dynamic insight generation based on tactical momentum vectors
     if player_data['GA_trend'] > 0.05:
