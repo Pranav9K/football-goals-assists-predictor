@@ -100,9 +100,9 @@ with col4:
 st.markdown("---")
 
 # visual grid section 2: graphics and performance context curves
-graph_col1, graph_col2 = st.columns(2)
+graph = st.columns(1)
 
-with graph_col1:
+with graph:
     st.subheader("Historical trajectory vs Machine learning projection")
     
     # build a clean timeline mapping values across rolling intervals
