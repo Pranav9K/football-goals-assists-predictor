@@ -100,14 +100,18 @@ with col4:
 st.markdown("---")
 
 # visual grid section 2: graphics and performance context curves
-graph = st.columns(1)
+graph, = st.columns(1)
 
 with graph:
     st.subheader("Historical trajectory vs Machine learning projection")
     
     # build a clean timeline mapping values across rolling intervals
     seasons = ['24-25 season', '25-26 season', '26-27 prediction']
-    historical_rates = [player_data['GA_per90_24'], player_data['GA_per90_25'], predicted_ga_per90]
+    historical_rates = [
+    player_data['GA_per90_24'].iloc[0], 
+    player_data['GA_per90_25'].iloc[0], 
+    predicted_ga_per90
+    ]
     
     fig, ax = plt.subplots(figsize=(7, 4))
     sns.lineplot(x=seasons, y=historical_rates, marker='o', sort=False, color='#1f77b4', linewidth=3, ax=ax)
