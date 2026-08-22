@@ -120,21 +120,3 @@ with graph_col1:
         
     sns.despine()
     st.pyplot(fig)
-
-with graph_col2:
-    st.subheader("Performance profiles and regression indicators")
-    
-    st.write(f"**primary tactical grouping:** `{player_data['Pos_24']}`")
-    # FIX: Corrected format string syntax to bring the colon inside the variable brackets
-    st.write(f"**rolling goal momentum metric (trend):** `{player_data['GA_trend']:+.2f}`")
-    st.write(f"**historical volatility parameter:** `{player_data['GA_volatility']:.2f}`")
-    
-    # FIXED: Removed xG and xAG expected threat profiles as they are not calculated or exported in the source notebook
-    
-    # dynamic insight generation based on tactical momentum vectors
-    if player_data['GA_trend'] > 0.05:
-        st.success("scouting brief: player demonstrates a clear ascending performance curve. upward projections are heavily backed by positive growth trajectories.")
-    elif player_data['GA_trend'] < -0.05:
-        st.warning("scouting brief: baseline analysis shows downward statistical contraction. upcoming model predictions are tuned defensively to adapt to this variance regression.")
-    else:
-        st.info("scouting brief: player maintains a stable, highly consistent production profile across multi-year data distributions.")
