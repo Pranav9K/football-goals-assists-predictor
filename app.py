@@ -62,16 +62,16 @@ simulated_90s = st.sidebar.slider("simulate projected volume (90s played):", 1.0
 features_schema = [
     'Age_current', 'Pos_encoded', '90s_24', '90s_25', 'GA_per90_24',
     'GA_per90_25', 'GA_consistency', 'GA_volatility', 'GA_trend', 
-    'PrgC_24', 'PrgP_24', 'PrgR_24' 
+    'PrgC_24', 'PrgP_24', 'PrgR_24', 'PrgC_24', 'PrgP_24', 'PrgR_24' 
 ]
 
 model_features = [
     'Age_current', 'Pos_encoded', '90s_23', '90s_24', 'GA_per90_23',
     'GA_per90_24', 'GA_consistency', 'GA_volatility', 'GA_trend', 
-    'PrgC_24', 'PrgP_24', 'PrgR_24'
+    'PrgC_24', 'PrgP_24', 'PrgR_24', 'PrgC_23', 'PrgP_23', 'PrgR_23'
 ]
 
-input_payload = pd.DataFrame([player_data[features_schema].values], columns=model_features)
+input_payload = pd.DataFrame([player_data[features_schema].astype(float).values], columns=model_features).astype(float)
 
 
 predicted_ga_per90 = forecasting_model.predict(input_payload)[0]
